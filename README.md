@@ -180,3 +180,63 @@ Add this:
 | Auto Updates | ✅ |
 
 ---
+
+
+---
+
+## 🆙 Optional: Upgrade to a 13B Model (Advanced)
+
+> ⚠️ You need **at least 32 GB RAM** to run 13B models like `llama2:13b` or `mistral:13b`.
+
+### 📥 Step 1: Pull a 13B Model
+
+To download `llama2:13b`:
+
+```bash
+ollama pull llama2:13b
+```
+
+To download `mistral:13b` (if available):
+
+```bash
+ollama pull mistral:13b
+```
+
+> This may take **15+ GB of disk space** and several minutes to download depending on your internet speed.
+
+### 🚀 Step 2: Run the Model
+
+```bash
+ollama run llama2:13b
+```
+
+Or using the API:
+
+```bash
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama2:13b",
+  "prompt": "Describe how neural networks work.",
+  "stream": false
+}'
+```
+
+---
+
+### 🚨 Common Issues & Fixes
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| `cannot allocate memory` | Not enough RAM | You need 32+ GB, add swap (not ideal), or use a smaller model |
+| `Killed` message | OOM (Out of Memory) | Try `mistral:7b` instead |
+| System freeze or crash | Swap overuse | Do not run on systems with < 32GB |
+
+---
+
+### 💡 Tips
+
+- Use SSD for better performance
+- Do not run multiple large models at the same time
+- For development or testing, use `mistral:7b` or `llama2:7b`
+
+---
+
